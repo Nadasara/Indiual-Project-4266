@@ -1,0 +1,80 @@
+﻿<Window x:Class="IndProject.AddUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IndProject"
+        mc:Ignorable="d"
+        Title="{Binding Title,UpdateSourceTrigger=PropertyChanged}" Height="450" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Window.DataContext>
+        <local:AddUserVM/>
+    </Window.DataContext>
+
+    <Border CornerRadius="50">
+        <Border  CornerRadius="15"
+                BorderThickness="3"
+                Opacity="0.985" >
+
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color=" #004d4d" Offset="0"/>
+                    <GradientStop Color=" #0086b3" Offset="0.75"/>
+                    <GradientStop Color=" #00334d" Offset="1"/>
+
+                </LinearGradientBrush>
+
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#003333 " Offset="0"/>
+                    <GradientStop Color="#00284d " Offset="0.75"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel
+            Width="800" Height="450" HorizontalAlignment="Center"
+            VerticalAlignment="Top" Orientation="Vertical">
+                    <TextBlock Margin="5" TextAlignment="Center" Text="{Binding Title,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Width="200"/>
+                    <TextBlock Text="First Name:" Margin="5" Foreground="White"/>
+                    <TextBox Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="400" Background="DarkGray"   Margin="5" Grid.Column="1"/>
+                    <TextBlock Text="Last Name:" Margin="5" Foreground="White" Grid.Row="1"/>
+                    <TextBox Text="{Binding Lastname, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="400" Background="DarkGray" Margin="5" Grid.Column="1"/>
+                    <TextBlock Text="Age:" Foreground="White" Margin="5" Grid.Row="1"/>
+                    <TextBox Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="50" Background="DarkGray" Margin="5" Grid.Row="1" Grid.Column="1"/>
+                    <TextBlock Text="Date Of Birth:" Foreground="White" Margin="5" Grid.Row="1"/>
+                    <TextBox Text="{Binding Dateofbirth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="400" Background="DarkGray" Margin="5" Grid.Row="1" Grid.Column="1"/>
+                    <TextBlock Text="GPA" Foreground="White" Margin="5" Grid.Row="1"/>
+                    <TextBox Text="{Binding Gpa, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="50" Background="DarkGray" Margin="5" Grid.Row="1" Grid.Column="1"/>
+                    <Button Content="Insert Picture" HorizontalAlignment="Center"  Command="{Binding UploadPhotoCommand}" Style="{StaticResource mainbutten3}" Margin="405,-150,5,-30" Grid.Row="3" Grid.ColumnSpan="2" Click="Button_Click" Width="150" RenderTransformOrigin="0.51,-2.314"/>
+                    <Image Height="140" HorizontalAlignment="Center" Width="144" Margin="500 -325 99 0" Source="{Binding SelectedImage,UpdateSourceTrigger=PropertyChanged}" />
+
+                    <Button Content="Save" Command="{Binding SaveCommand}" Style="{StaticResource mainbutten}" Margin="0 40" Grid.Row="3" Grid.ColumnSpan="2"/>
+
+
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+    </Border>
+</Window>
